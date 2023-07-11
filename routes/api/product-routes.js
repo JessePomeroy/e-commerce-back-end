@@ -68,12 +68,12 @@ router.post('/', (req, res) => {
             tag_id,
           };
         });
-        return ProductTag.bulkCreate(productTagIdArr);
+        return ProductTag.bulkCreate(productTagIdArr)
+          .then((productTagIds) => res.status(200).json(productTagIds));
       }
       // if no product tags, just respond
       res.status(200).json(product);
     })
-    .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {
       console.log(err);
       res.status(400).json(err);
@@ -91,7 +91,7 @@ router.put('/:id', (req, res) => {
     .then((product) => {
       if (req.body.tagIds && req.body.tagIds.length) {
 
-        ProductTag.findAll({
+        return ProductTag.findAll({
           where: { product_id: req.params.id }
         }).then((productTags) => {
           // create filtered list of new tag_ids
@@ -113,7 +113,8 @@ router.put('/:id', (req, res) => {
           return Promise.all([
             ProductTag.destroy({ where: { id: productTagsToRemove } }),
             ProductTag.bulkCreate(newProductTags),
-          ]);
+          ])
+            .then(() => res.json(product));
         });
       }
 
@@ -137,7 +138,7 @@ router.delete('/:id', async (req, res) => {
       res.status(404).json({ message: 'no product found.' });
       return;
     }
-    res.status(200).json(productData);
+    res.status(200).json({ message: 'product deleted successfully' });
   } catch (err) {
     res.status(500).json(err);
   }
