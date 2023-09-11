@@ -16,7 +16,7 @@ The ORM enables CRUD operations on product, category, and tag models through a s
 
 ## Preview
    
-[![Application Demo Video]()](https://youtu.be/tGRmb9q9DZM)
+[![Application Demo Video](https://github.com/JessePomeroy/e-commerce-back-end/blob/main/assets/scrot.png)](https://youtu.be/tGRmb9q9DZM)
    
 ## License
 
