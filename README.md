@@ -35,7 +35,7 @@ This project is licensed under the MIT license. See the [LICENSE](LICENSE) file 
 
 https://youtu.be/tGRmb9q9DZM
 
-https://github.com/jessepomeroy/react-port   
+https://github.com/JessePomeroy/e-commerce-back-end   
 
 ## Credits
 
